@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h1>Welcome to My Blog</h1>
+    <p class="lead">Latest Blog Posts</p>
+
+    {% if posts %} {% for post in posts %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content[:100] }}...</p>
+        <small class="text-muted"
+          >By {{ post.author.username }} on {{ post.date_created.strftime('%B
+          %d, %Y') }}</small
+        >
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="alert alert-info">
+      <h4>No posts yet!</h4>
+      <p>Be the first to create a blog post.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
